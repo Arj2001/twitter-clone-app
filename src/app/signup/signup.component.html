@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+            <div class="row g-3">
+                <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                    <h1>Sign Up</h1>
+                    <h3>Enter your details</h3>
+                </div>
+                <div class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                    <label for="" class="form-label">Enter your name</label>
+                    <input type="text" name="name" [(ngModel)]="name" id="" class="form-control">
+                </div>
+                <div class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                    <label for="" class="form-label">Enter date of birth</label>
+                    <input type="date" name="dob" [(ngModel)]="dob" id="" class="form-control">
+                </div>
+                <div class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                    <label for="" class="form-label">Enter your phone number</label>
+                    <input type="tel" name="phone" [(ngModel)]="phone" id="" class="form-control">
+                </div>
+                <div class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-4">
+                    <label for="" class="form-label">Enter your Place</label>
+                    <input type="text" name="place" [(ngModel)]="place" id="" class="form-control">
+                </div>
+                <div class="col col-12 col-sm-6 col-md-6 col-lg-8 col-xl-8 col-xxl-8">
+                    <label for="" class="form-label">Enter your email</label>
+                    <input type="email" name="email" [(ngModel)]="email" id="" class="form-control">
+                </div>
+                <div class="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                    <label for="" class="form-label">Create your Password</label>
+                    <input type="password" name="password" [(ngModel)]="password" id="" class="form-control">
+                </div>
+                <div class="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                    <label for="" class="form-label">Confirm your Password</label>
+                    <input type="password" name="confirmPass" [(ngModel)]="confrimPass"  id="" class="form-control">
+                </div>
+                <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                    <button class="btn btn-dark" (click)="readValue()">Login</button>
+                </div>
+                <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                    <a href="" routerLink="/">Already a user? Click here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
