@@ -18,9 +18,10 @@ export class LoginComponent implements OnInit {
       "password":this.password
     }
     console.log(data)
+    
 
   }
-  
+
   ngOnInit(): void {
   }
 

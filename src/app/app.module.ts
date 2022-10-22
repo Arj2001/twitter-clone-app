@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { HttpClientModule } from "@angular/common/http";
 
 const addRoutes:Routes = [
   {
@@ -26,7 +27,8 @@ const addRoutes:Routes = [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(addRoutes),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

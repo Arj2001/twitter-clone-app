@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-signup',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private myApi:ApiService) { }
 
   name = ""
   dob = ""
@@ -15,6 +16,7 @@ export class SignupComponent implements OnInit {
   place = ""
   email = ""
   password = ""
+  confrimPass = ""
 
   readValue=()=>{
     let data = {
@@ -26,12 +28,18 @@ export class SignupComponent implements OnInit {
       "password":this.password,
     }
     console.log(data)
+    this.myApi.addUser(data).subscribe(
+      (resp)=>{
+        alert(resp)
+      }
+    )
     this.name = ""
     this.dob = ""
     this.phone = ""
     this.place = ""
     this.email = ""
     this.password = ""
+    this.confrimPass = ""
   }
 
   ngOnInit(): void {
