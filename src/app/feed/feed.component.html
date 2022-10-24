@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<div class="container text-white my-3">
+    <div class="row">
+        <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xxl-12 col-xl-12">
+            <div class="row">
+                <div class="col col-1 "></div>
+                <div
+                    class="row g-3 py-2 px-0 rounded-2 bg-dark col col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10">
+                    <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                        <label for="" class="form-label fs-4">Enter your tweet...</label>
+                        <textarea type="text" name="tweet" id="" rows="6"
+                            placeholder="Write somthing awesome about you........"
+                            class="form-control fs-5 bg-dark text-white" [(ngModel)]="tweet"></textarea>
+                    </div>
+                    <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                        <button class="btn btn-primary btn-lg" (click)="readValues()">Tweet</button>
+                    </div>
+                </div>
+                <div class="p-0 col col-1"></div>
+            </div>
+            <div class="row my-3" *ngFor="let i of counter(10)">
+                <div class="col col-1"></div>
+                
+                    <div class="mn-1 col col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10 col-xxl-10 p-0">
+                        <div class="card text-white bg-dark mx-0 ">
+                            <div class="card-header d-flex">{{user}} <span class="ms-auto">Date</span> </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam expedita, modi molestias iste in explicabo veniam tempora laboriosam necessitatibus dolorem, nobis repudiandae delectus soluta ut dolor quo amet, natus impedit.</h5>
+                            </div>
+                        </div>
+                    </div>
+                
+                <div class="col col-1"></div>
+            </div>
+        </div>
+    </div>
+</div>

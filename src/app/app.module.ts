@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from "@angular/common/http";
+import { FeedComponent } from './feed/feed.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const addRoutes:Routes = [
   {
@@ -15,13 +17,18 @@ const addRoutes:Routes = [
   },
   {
     path:"signup",component:SignupComponent
+  },
+  {
+    path:"feed",component:FeedComponent
   }
 ]
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    FeedComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ApiService } from '../api.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private myApi:ApiService) { }
+  constructor(private myApi:ApiService,private myRouter:Router) { }
 
   email = ""
   password = ""
@@ -24,6 +25,9 @@ export class LoginComponent implements OnInit {
         if (resp.length > 0) {
           alert("login successful")
           console.log(resp)
+          localStorage.setItem("id",resp[0].id)
+          localStorage.setItem("name",resp[0].name)
+          this.myRouter.navigate(["/feed"])
         } else {
           alert("Invalid credtionalas")
           console.log("not working")
