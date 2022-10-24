@@ -15,4 +15,16 @@ export class ApiService {
   auth=(data:any)=>{
     return this.http.post("http://localhost:8080/auth",data)
   }
+
+  addTweet=(data:any)=>{
+    return this.http.post("http://localhost:8080/addTweet",data)
+  }
+
+  viewTweets=()=>{
+    return this.http.get("http://localhost:8080/viewTweets")
+  }
+
+  viewTweetOwner=(user_id:any)=>{
+    return this.http.post("http://localhost:8080/viewTweetOwner",user_id)
+  }
 }
