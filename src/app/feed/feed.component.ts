@@ -19,9 +19,8 @@ export class FeedComponent implements OnInit,AfterViewInit {
   readValues=()=>{
     let data = {
       "user_id":localStorage.getItem("id"),
-      "name":this.user,
       "tweets":this.tweet,
-      "datetime":formatDate(new Date(),'yyyy-MM-dd h:mm:ss','en')
+      "datetime":formatDate(new Date(),'dd-MM-yyyy h:mm:ss','en')
     }
     this.myApi.addTweet(data).subscribe(
       (resp)=>{

@@ -37,6 +37,14 @@ export class MyTweetsComponent implements OnInit {
     this.getMyTweets()
   }
 
+  editTweet=(id:any)=>{
+    let data = {
+      "id":id
+    }
+    
+    
+  }
+
   ngOnInit(): void {
   }
   ngAfterViewInit() {

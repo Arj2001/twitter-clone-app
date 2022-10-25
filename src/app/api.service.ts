@@ -30,4 +30,7 @@ export class ApiService {
   deleteTweets=(id:any)=>{
     return this.http.post("http://localhost:8080/deleteTweet",id)
   }
+  editTweets=(id:any)=>{
+    return this.http.post("http://localhost:8080/editTweet",id)
+  }
 }
