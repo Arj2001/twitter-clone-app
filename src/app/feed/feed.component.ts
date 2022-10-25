@@ -1,4 +1,6 @@
+import { formatDate } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-feed',
@@ -7,22 +9,41 @@ import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 })
 export class FeedComponent implements OnInit,AfterViewInit {
 
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef,private myApi:ApiService) {
+    this.getTweets()
+  }
 
   user = localStorage.getItem("name")
   tweet = ""
 
   readValues=()=>{
     let data = {
-      "id":localStorage.getItem("id"),
-      "tweet":this.tweet
+      "user_id":localStorage.getItem("id"),
+      "tweets":this.tweet,
+      "datetime":formatDate(new Date(),'dd-MM-yyyy h:mm:ss','en')
     }
+    this.myApi.addTweet(data).subscribe(
+      (resp)=>{
+        alert(resp);
+      }
+    )
+    this.getTweets()
     console.log(data)
+    this.tweet = ""
+    alert("Tweeted")
+    this.getTweets()
+  }
+
+  getTweets=()=>{
+    this.myApi.viewTweets().subscribe(
+      (resp)=>{
+        this.tweetsData = resp
+      }
+    )
   }
   
-  counter(i: number) {
-    return new Array(i);
-}
+  tweetsData:any
+  tweetOwner:any
 
   ngOnInit(): void {
 

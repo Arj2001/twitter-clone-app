@@ -7,10 +7,14 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-link active" aria-current="page" routerLink="/feed">Feeds</a>
-          
+          <a class="nav-link active" routerLink="/myTweets">My tweets</a>
         </div>
 
       </div>
       <span class="navbar-text text-white">Hello {{user}}</span>
+      <div class="navbar-nav ms-4">
+        <a class="rounded btn btn-danger" href="" (click)="logout" aria-current="page">Logout</a>
+      </div>
+      
     </div>
   </nav>
