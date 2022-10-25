@@ -24,7 +24,10 @@ export class ApiService {
     return this.http.get("http://localhost:8080/viewTweets")
   }
 
-  viewTweetOwner=(user_id:any)=>{
-    return this.http.post("http://localhost:8080/viewTweetOwner",user_id)
+  viewUserTweets=(user_id:any)=>{
+    return this.http.post("http://localhost:8080/viewUserTweet",user_id)
+  }
+  deleteTweets=(id:any)=>{
+    return this.http.post("http://localhost:8080/deleteTweet",id)
   }
 }
