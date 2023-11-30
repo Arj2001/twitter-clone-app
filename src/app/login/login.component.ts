@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +10,8 @@ import { ApiService } from '../api.service';
 })
 export class LoginComponent implements OnInit {
 
-  display: any
   constructor(private myApi: ApiService, private myRouter: Router) {
-    this.display = "none"
+    
   }
 
   email = ""
@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
       "email": this.email,
       "password": this.password
     }
-    this.display = 'block'
+    
+    AppComponent.loadingDisplay = 'block'
     this.myApi.auth(data).subscribe({
       next: (resp: any) => {
         if (resp.length > 0) {
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
     })
 
     const hideSpinner = () =>{
-      this.display = 'none'
+      AppComponent.loadingDisplay = 'none'
     }
   }
 
