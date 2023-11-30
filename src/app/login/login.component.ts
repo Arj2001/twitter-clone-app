@@ -9,32 +9,42 @@ import { ApiService } from '../api.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private myApi:ApiService,private myRouter:Router) { }
+  display: any
+  constructor(private myApi: ApiService, private myRouter: Router) {
+    this.display = "none"
+  }
 
   email = ""
   password = ""
 
-  readValues=()=>{
+  readValues = () => {
     let data = {
-      "email":this.email,
-      "password":this.password
+      "email": this.email,
+      "password": this.password
     }
-    console.log(data)
-    this.myApi.auth(data).subscribe(
-      (resp:any)=>{
+    this.display = 'block'
+    this.myApi.auth(data).subscribe({
+      next: (resp: any) => {
         if (resp.length > 0) {
-          alert("login successful")
-          console.log(resp)
-          localStorage.setItem("id",resp[0].id)
-          localStorage.setItem("name",resp[0].name)
+          alert("Login Successful")
+          localStorage.setItem("id", resp[0].id)
+          localStorage.setItem("name", resp[0].name)
           this.myRouter.navigate(["/feed"])
         } else {
+          hideSpinner()
           alert("Invalid credtionalas")
-          console.log("not working")
         }
-      }
-    )
+      },
+      error(err) {
+        console.error(err)
+        hideSpinner()
+        alert("Error! Try after sometime")
+      },
+    })
 
+    const hideSpinner = () =>{
+      this.display = 'none'
+    }
   }
 
   ngOnInit(): void {
