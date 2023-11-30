@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'twitter-clone-app';
+  public static loadingDisplay = 'none';
+  
+  public get getDisplay() : string {
+    return AppComponent.loadingDisplay
+  }
+  
 }
