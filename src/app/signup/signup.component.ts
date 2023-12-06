@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { AppComponent } from '../app.component';
+import { Users } from '../models/users';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -8,41 +12,59 @@ import { ApiService } from '../api.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private myApi:ApiService) { }
+  constructor(private myApi: ApiService, protected user: Users, private myRouter: Router) { }
+  ngOnInit(): void {
+  
+    var form = document.getElementsByClassName('needs-validation')[0] as HTMLFormElement;
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
 
-  name = ""
-  dob = ""
-  phone = ""
-  place = ""
-  email = ""
-  password = ""
-  confrimPass = ""
+        form.classList.add('was-validated')
+      }, false)
+  }
+  passwordMatch: boolean = true
+  passwordDisp = 'none';
+  onSubmit = (validForm: boolean | null) => {
+    if (validForm) {
 
-  readValue=()=>{
-    let data = {
-      "name":this.name,
-      "dob":this.dob,
-      "phone":this.phone,
-      "place":this.place,
-      "email":this.email,
-      "password":this.password,
-    }
-    console.log(data)
-    this.myApi.addUser(data).subscribe(
-      (resp)=>{
-        alert(resp)
+      if (this.user.password == this.user.confrimPass) {
+
+        let data = this.user.getJson()
+
+        AppComponent.loadingDisplay = 'block';
+        this.myApi.addUser(data).subscribe({
+          next: (resp) => {
+            AppComponent.loadingDisplay = 'none';
+            this.user.clearValues;
+            alert("SignUp successed")
+            this.myRouter.navigate([""]);
+          },
+          error: (err) => {
+            AppComponent.loadingDisplay = 'none';
+            console.log(err)
+            alert("Error in signup! Try agian after sometime")
+          }
+        })
       }
-    )
-    this.name = ""
-    this.dob = ""
-    this.phone = ""
-    this.place = ""
-    this.email = ""
-    this.password = ""
-    this.confrimPass = ""
+      else {
+        this.user.confrimPass = ""
+        alert("Password mismatch");
+      }
+    }
   }
 
-  ngOnInit(): void {
+  confirmPassword = () => {
+
+    if (this.user.password != this.user.confrimPass) {
+      this.passwordDisp = 'block'
+      this.passwordMatch = false
+    } else {
+      this.passwordDisp = 'none'
+      this.passwordMatch = true
+    }
   }
 
 }
