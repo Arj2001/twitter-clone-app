@@ -27,6 +27,7 @@ export class SignupComponent implements OnInit {
   }
   passwordMatch: boolean = true
   passwordDisp = 'none';
+  passwordFilter = 'none';
   onSubmit = (validForm: boolean | null) => {
     if (validForm) {
 
@@ -57,13 +58,20 @@ export class SignupComponent implements OnInit {
   }
 
   confirmPassword = () => {
-
+    
+    if(this.user.password.length < 6){
+      this.passwordFilter = 'block'
+      return 0;
+    }
+    this.passwordFilter = 'none'
     if (this.user.password != this.user.confrimPass) {
       this.passwordDisp = 'block'
       this.passwordMatch = false
+      return 0;
     } else {
       this.passwordDisp = 'none'
       this.passwordMatch = true
+      return 0;
     }
   }
 

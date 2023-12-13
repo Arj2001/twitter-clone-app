@@ -7,11 +7,11 @@
                 </div>
                 <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                     <label for="" class="form-label">Email</label>
-                    <input type="email" name="email" [(ngModel)]="email" id="" class="form-control">
+                    <input type="email" name="email" [(ngModel)]="email" id="" class="form-control" required>
                 </div>
                 <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                     <label for="" class="form-label">Password</label>
-                    <input type="password" name="password" [(ngModel)]="password" id="" class="form-control">
+                    <input type="password" name="password" [(ngModel)]="password" id="" class="form-control" required>
                 </div>
                 <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                     <button class="btn btn-dark" (click)="readValues()">Login</button>
