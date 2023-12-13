@@ -6,31 +6,31 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
 
-  constructor(private http:HttpClient) { }
-
-  addUser=(data:any)=>{
-    return this.http.post("http://localhost:8080/addUser",data)
+  constructor(private http: HttpClient) { }
+  addUser = (data: any) => {
+    console.log("add user")
+    return this.http.post("http://localhost:8080/addUser", data, { responseType: 'text' })
   }
 
-  auth=(data:any)=>{
-    return this.http.post("http://localhost:8080/auth",data)
+  auth = (data: any) => {
+    return this.http.post("http://localhost:8080/auth", data)
   }
 
-  addTweet=(data:any)=>{
-    return this.http.post("http://localhost:8080/addTweet",data)
+  addTweet = (data: any) => {
+    return this.http.post("http://localhost:8080/addTweet", data, { responseType: 'text' })
   }
 
-  viewTweets=()=>{
+  viewTweets = () => {
     return this.http.get("http://localhost:8080/viewTweets")
   }
 
-  viewUserTweets=(user_id:any)=>{
-    return this.http.post("http://localhost:8080/viewUserTweet",user_id)
+  viewUserTweets = (user_id: any) => {
+    return this.http.post("http://localhost:8080/viewUserTweet", user_id)
   }
-  deleteTweets=(id:any)=>{
-    return this.http.post("http://localhost:8080/deleteTweet",id)
+  deleteTweets = (id: any) => {
+    return this.http.post("http://localhost:8080/deleteTweet", id, { responseType: 'text' })
   }
-  editTweets=(id:any)=>{
-    return this.http.post("http://localhost:8080/editTweet",id)
+  editTweets = (id: any) => {
+    return this.http.post("http://localhost:8080/editTweet", id, { responseType: 'text' })
   }
 }
